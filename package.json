@@ -1,0 +1,17 @@
+{
+  "name": "slacko_back",
+  "version": "1.0.0",
+  "description": "Back-end chat for a tutorial app",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "node index.js"
+  },
+  "author": "MM",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "socket.io": "^4.4.1"
+  }
+}
