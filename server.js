@@ -1,11 +1,12 @@
 var app = require('express')();
 var cors = require('cors');
-app.use(cors());
+app.options('*', cors()) // include before other routes
+// app.use(cors());
 var http = require('http').createServer(app);
 const PORT = 8080;
 
 var io = require('socket.io')(http, {
-    origins: ["http://localhost:3001"]
+    origins: ["*"]
 });
 
 var STATIC_CHANNELS = [{
