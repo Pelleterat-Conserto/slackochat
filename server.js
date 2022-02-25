@@ -9,7 +9,7 @@ const PORT = 8080;
 
 const io = require("socket.io")(http, {
     cors: {
-      origin: "*",
+      origin: "http://localhost:3000",
       methods: ["GET", "POST"]
     }
   });
