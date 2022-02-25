@@ -3,11 +3,19 @@ var cors = require('cors');
 app.use(cors());
 var http = require('http').createServer(app);
 const PORT = 8080;
+
 var io = require('socket.io')(http, {
     cors: {
-        origin: 'http://localhost:3001',
+        origin: '*',
+        handlePreflightRequest: (req, res) => {
+            res.writeHead(200, {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST"
+            })
+        }
       }
 });
+
 var STATIC_CHANNELS = [{
     name: 'General',
     participants: 0,
