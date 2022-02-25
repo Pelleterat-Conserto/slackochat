@@ -2,7 +2,7 @@ var app = require('express')();
 
 var cors = require('cors')
 
-// app.use(cors())
+app.use(cors())
 
 var http = require('http').createServer(app);
 const PORT = 8080;
@@ -78,29 +78,10 @@ io.on('connection', (socket) => {
 });
 
 
-
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested, Content-Type, Accept Authorization"
-    )
-    if (req.method === "OPTIONS") {
-      res.header(
-        "Access-Control-Allow-Methods",
-        "POST, PUT, PATCH, GET, DELETE"
-      )
-      return res.status(200).json({})
-    }
-    next()
-  })
-
-
 /**
  * @description This methos retirves the static channels
  */
 app.get('/getChannels', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json({
         channels: STATIC_CHANNELS
     })
