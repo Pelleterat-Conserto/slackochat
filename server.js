@@ -2,7 +2,7 @@ var app = require('express')();
 
 var cors = require('cors')
 
-app.use(cors())
+app.use(cors({origin: "*"}))
 
 var http = require('http').createServer(app);
 const PORT = 8080;
