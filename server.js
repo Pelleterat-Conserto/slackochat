@@ -5,9 +5,8 @@ var http = require('http').createServer(app);
 const PORT = 8080;
 var io = require('socket.io')(http, {
     cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
+        origin: '*',
+      }
 });
 var STATIC_CHANNELS = [{
     name: 'General',
