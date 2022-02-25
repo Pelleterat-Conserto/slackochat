@@ -1,13 +1,18 @@
 var app = require('express')();
-var cors = require('cors');
-app.options('*', cors()) // include before other routes
-// app.use(cors());
+
+var cors = require('cors')
+
+app.use(cors())
+
 var http = require('http').createServer(app);
 const PORT = 8080;
 
-var io = require('socket.io')(http, {
-    origins: ["*"]
-});
+const io = require("socket.io")(http, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
+  });
 
 var STATIC_CHANNELS = [{
     name: 'General',
@@ -21,17 +26,16 @@ var STATIC_CHANNELS = [{
     sockets: []
 }];
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-})
-
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     next();
+// })
 
 http.listen(PORT, () => {
     console.log(`listening on *:${PORT}`);
 });
 
-// socket object may be used to send specific messages to the new connected client
+
 io.on('connection', (socket) => {
     console.log('new client connected');
     socket.emit('connection', null);
@@ -74,9 +78,8 @@ io.on('connection', (socket) => {
 });
 
 
-
 /**
- * @description This method retirves the static channels
+ * @description This methos retirves the static channels
  */
 app.get('/getChannels', (req, res) => {
     res.json({

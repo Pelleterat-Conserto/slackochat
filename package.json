@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Back-end chat for a tutorial app",
   "main": "index.js",
+  "engines": {
+    "node": "^14.0.0"
+  },
   "scripts": {
     "test": "npm test",
     "start": "node server.js"
