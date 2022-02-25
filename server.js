@@ -26,7 +26,7 @@ var STATIC_CHANNELS = [{
     sockets: []
 }];
 
-// app.use((req, res, next) => {
+//  app.use((req, res, next) => {
 //     res.setHeader('Access-Control-Allow-Origin', '*');
 //     next();
 // })
@@ -81,7 +81,8 @@ io.on('connection', (socket) => {
 /**
  * @description This methos retirves the static channels
  */
-app.get('/getChannels', cors(), (req, res) => {
+app.get('/getChannels', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json({
         channels: STATIC_CHANNELS
     })
