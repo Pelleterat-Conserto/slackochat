@@ -81,7 +81,7 @@ io.on('connection', (socket) => {
 /**
  * @description This methos retirves the static channels
  */
-app.get('/getChannels', (req, res) => {
+app.get('/getChannels', cors(), (req, res) => {
     res.json({
         channels: STATIC_CHANNELS
     })
