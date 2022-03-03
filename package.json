@@ -4,8 +4,8 @@
   "description": "Back-end chat for a tutorial app",
   "main": "index.js",
   "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "node": "14.x",
+    "npm": "6.x"
   },
   "scripts": {
     "test": "npm test",
