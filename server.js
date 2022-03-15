@@ -26,15 +26,14 @@ var STATIC_CHANNELS = [{
     sockets: []
 }];
 
-//  app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     next();
-// })
-
-http.listen(PORT, () => {
-    console.log(`listening on *:${PORT}`);
+/**
+ * @description This methos retirves the static channels
+ */
+ app.get('/getChannels', (req, res) => {
+    res.json({
+        channels: STATIC_CHANNELS
+    })
 });
-
 
 io.on('connection', (socket) => {
     console.log('new client connected');
@@ -77,12 +76,6 @@ io.on('connection', (socket) => {
 
 });
 
-
-/**
- * @description This methos retirves the static channels
- */
-app.get('/getChannels', (req, res) => {
-    res.json({
-        channels: STATIC_CHANNELS
-    })
+http.listen(PORT, () => {
+    console.log(`listening on *:${PORT}`);
 });
